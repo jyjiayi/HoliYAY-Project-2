@@ -1,0 +1,113 @@
+<%- include('header', {title: 'Edit Activity'}); -%>
+
+<div class="edit-activity-form-container">
+  <h1>Editing activity for</h1>
+  <h2>Trip: <%= activityData.country%></h2>
+  <h2>
+    Day: <%= activityData.day_num%> (<%= activityData.date.toDateString()%>)
+  </h2>
+  <form
+    action="/activity/<%= activityData.activity_id%>?_method=PUT"
+    method="POST"
+  >
+    <div class="row">
+      <div class="col-sm-4 input-field">
+        <label for="category_id">Category</label><br />
+      </div>
+      <div class="col-sm-7 input-field">
+        <select
+          type="number"
+          id="category_id"
+          name="category_id"
+          required
+        >
+          <% categoryData.forEach((item) => { %>
+            <% if (item.id === activityData.category_id) { %>
+              <option value="<%= item.id%>" selected><%= item.type%></option>
+            <% } else {%>
+              <option value="<%= item.id%>"><%= item.type%></option>
+            <% } %>
+          <%})%>
+        </select>
+      </div>
+      <div class="col-sm-2 input-field">
+        <label for="details">Details: </label><br />
+      </div>
+      <div class="col-sm-4 input-field">
+        <input
+          type="text"
+          id="details"
+          name="details"
+          value="<%= activityData.details %>"
+          required
+        /><br />
+      </div>
+      <div class="col-sm-2 input-field">
+        <label for="start_time">Start Time:</label><br />
+      </div>
+      <div class="col-sm-4 input-field">
+        <input
+          type="time"
+          id="start_time"
+          name="start_time"
+          value="<%= activityData.start_time%>"
+          required
+        /><br />
+      </div>
+      <div class="col-sm-2 input-field">
+        <label for="end_time">End Time:</label><br />
+      </div>
+      <div class="col-sm-4 input-field">
+        <input
+          type="time"
+          id="end_time"
+          name="end_time"
+          value="<%= activityData.end_time%>"
+          required
+        /><br />
+      </div>
+      <div class="col-sm-2 input-field">
+        <label for="comments">Comments (if any): </label><br />
+      </div>
+      <div class="col-sm-4 input-field">
+        <input
+          type="text"
+          id="comments"
+          name="comments"
+          value="<%= activityData.comments%>"
+        /><br />
+      </div>
+      <div class="col-sm-2 input-field">
+        <label for="transport_type"
+          >Type of Transport after activity (if any): </label
+        ><br />
+      </div>
+      <div class="col-sm-4 input-field">
+        <input
+          type="text"
+          id="transport_type"
+          name="transport_type"
+          value="<%= activityData.transport_type%>"
+        /><br />
+      </div>
+      <div class="col-sm-2 input-field">
+        <label for="transport_duration">Duration of Transport (if any): </label
+        ><br />
+      </div>
+      <div class="col-sm-4 input-field">
+        <input
+          type="text"
+          id="transport_duration"
+          name="transport_duration"
+          value="<%= activityData.transport_duration%>"
+        /><br />
+      </div>
+    </div>
+    <div>
+      <br />
+      <input type="submit" value="Submit" />
+    </div>
+  </form>
+</div>
+
+<%- include('footer'); -%>

@@ -1,0 +1,37 @@
+<%- include('header', {title: 'Add New Buddy'}); -%>
+
+<div class="buddy-form-container">
+  <h1>Add New Buddy</h1>
+  <form action="/add-buddy" method="POST">
+    <div class="row">
+      <div class="col-sm-2 input-field">
+        <label for="user_name">Adding buddy for:</label><br />
+      </div>
+      <div class="col-sm-4 input-field">
+        <input
+          type="text"
+          id="user_name"
+          name="user_name"
+          value="<%= userData.name%>"
+          readonly
+        /><br />
+      </div>
+      <div class="col-sm-2 input-field">
+        <label for="buddy_user_name">New Buddy:</label><br />
+      </div>
+      <div class="col-sm-4 input-field">
+        <input
+          type="text"
+          id="buddy_user_name"
+          name="buddy_user_name"
+          required
+        /><br />
+      </div>
+    </div>
+    <div>
+      <br />
+      <input type="submit" value="Submit" />
+    </div>
+  </form>
+</div>
+<%- include('footer'); -%>

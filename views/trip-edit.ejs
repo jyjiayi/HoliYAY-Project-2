@@ -1,0 +1,49 @@
+<%- include('header', {title: 'Edit Trip'}); -%>
+
+<div class="trip-form-container">
+  <h1>Edit Trip</h1>
+  <form action="/trip/<%= tripData.id%>?_method=PUT" method="POST">
+    <div class="row">
+      <div class="col-sm-4 input-field">
+        <label for="country">Where are you going?</label><br />
+      </div>
+      <div class="col-sm-7 input-field">
+        <input
+          type="text"
+          id="country"
+          name="country"
+          value="<%= tripData.country%>"
+          required
+        /><br />
+      </div>
+      <div class="col-sm-2 input-field">
+        <label for="start_date">Start Date:</label><br />
+      </div>
+      <div class="col-sm-4 input-field">
+        <input
+          type="date"
+          id="start_date"
+          name="start_date"
+          value="<%= startDateFormatted%>"
+          required
+        /><br />
+      </div>
+      <div class="col-sm-2 input-field">
+        <label for="end_date">End Date:</label><br />
+      </div>
+      <div class="col-sm-4 input-field">
+        <input
+          type="date"
+          id="end_date"
+          name="end_date"
+          value="<%= endDateFormatted%>"
+          required
+        /><br />
+      </div>
+    </div>
+    <div>
+      <input type="submit" value="Submit" />
+    </div>
+  </form>
+</div>
+<%- include('footer'); -%>

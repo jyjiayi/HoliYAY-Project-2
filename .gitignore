@@ -1,0 +1,8 @@
+# File that sometimes appears on MacOS
+.DS_Store
+
+# Dependency directories
+node_modules/
+
+# want Git to save the existence ****of the uploads folder, but ignore the files in it
+uploads/*

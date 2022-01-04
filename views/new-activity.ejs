@@ -1,0 +1,72 @@
+<%- include('header', {title: 'Add Activity'}); -%>
+
+<div class="activity-form-container">
+  <h1>Adding activity for</h1>
+  <h2>Trip: <%= tripAndDayData.country%></h2>
+  <h2>
+    Day: <%= tripAndDayData.day_num%> (<%= tripAndDayData.date.toDateString()%>)
+  </h2>
+  <form action="/new-activity/<%= dayId%>" method="POST">
+    <div class="row">
+      <div class="col-sm-4 input-field">
+        <label for="category_id">Category</label><br />
+      </div>
+      <div class="col-sm-7 input-field">
+        <select type="number" id="category_id" name="category_id" required>
+          <% categoryData.forEach((item) => { %>
+          <option value="<%= item.id%>"><%= item.type%></option>
+          <%})%>
+        </select>
+      </div>
+      <div class="col-sm-2 input-field">
+        <label for="details">Details: </label><br />
+      </div>
+      <div class="col-sm-4 input-field">
+        <input type="text" id="details" name="details" required /><br />
+      </div>
+      <div class="col-sm-2 input-field">
+        <label for="start_time">Start Time:</label><br />
+      </div>
+      <div class="col-sm-4 input-field">
+        <input type="time" id="start_time" name="start_time" required /><br />
+      </div>
+      <div class="col-sm-2 input-field">
+        <label for="end_time">End Time:</label><br />
+      </div>
+      <div class="col-sm-4 input-field">
+        <input type="time" id="end_time" name="end_time" required /><br />
+      </div>
+      <div class="col-sm-2 input-field">
+        <label for="comments">Comments (if any): </label><br />
+      </div>
+      <div class="col-sm-4 input-field">
+        <input type="text" id="comments" name="comments" /><br />
+      </div>
+      <div class="col-sm-2 input-field">
+        <label for="transport_type"
+          >Type of Transport after activity (if any): </label
+        ><br />
+      </div>
+      <div class="col-sm-4 input-field">
+        <input type="text" id="transport_type" name="transport_type" /><br />
+      </div>
+      <div class="col-sm-2 input-field">
+        <label for="transport_duration">Duration of Transport (if any): </label
+        ><br />
+      </div>
+      <div class="col-sm-4 input-field">
+        <input
+          type="text"
+          id="transport_duration"
+          name="transport_duration"
+        /><br />
+      </div>
+    </div>
+    <div>
+      <br />
+      <input type="submit" value="Submit" />
+    </div>
+  </form>
+</div>
+
+<%- include('footer'); -%>

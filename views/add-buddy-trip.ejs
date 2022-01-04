@@ -1,0 +1,28 @@
+<%- include('header', {title: 'Edit Trips to Buddy'}); -%>
+<div class="activity-form-container">
+  <h1>Editing Trips for <%= buddyName%></h1>
+  <h3>
+    Current Trips: <% myBuddyTrips.forEach(trip=> {%> <%= trip.country%> <%})%>
+  </h3>
+  <div>
+    <form action="/buddy-trip/<%= buddyName%>?_method=PUT" method="POST">
+      <div class="row">
+        <div class="col-sm-2 input-field">
+          <label for="country">Add Trip: </label><br />
+        </div>
+        <div class="col-sm-4 input-field">
+          <select type="text" id="country" name="country" required>
+            <% tripsThatBuddyNotIn.forEach(trip => {%>
+            <option value="<%= trip.id%>"><%= trip.country%></option>
+            <% }) %></select
+          ><br />
+        </div>
+      </div>
+      <div>
+        <br />
+        <input type="submit" value="Submit" />
+      </div>
+    </form>
+  </div>
+</div>
+<%- include('footer'); -%>

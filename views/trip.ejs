@@ -1,0 +1,53 @@
+<%- include('header', {title: 'Single Trip'}); -%>
+
+<div class="single-trip-container">
+  <div class="trip-details d-flex">
+    <h1>Trip to <%= tripData[0].country %></h1>
+    <h3>
+      <%= tripData[0].start_date.toLocaleDateString()%> - <%=
+      tripData[0].end_date.toLocaleDateString()%>
+    </h3>
+  </div>
+
+  <div class="days-group">
+    <div class="row text-center">
+      <% for(let i=1; i<=numOfDays; i++) {%>
+      <div class="col-12 col-md-4">
+        <h2>Day <%= i%> (<%= tripData[i-1].date.toDateString()%>)</h2>
+        <i class="fas fa-plus-circle"></i>
+        <a href="/new-activity/<%= tripData[i-1].day_id%>"
+          >Add activity for this day</a
+        >
+        <% insertedActivitiesData.forEach(activity => { %>
+        <div>
+          <% if (activity.day_id == tripData[i-1].day_id){%>
+          <div class="each-activity-main">
+            <div class="d-flex" style="justify-content: space-between">
+              <%= activity.type%>
+              <a href="/activity/<%= activity.id %>"
+                ><i class="far fa-eye"></i>View</a
+              >
+            </div>
+            <div><%= activity.details%></div>
+            <div>
+              <i class="far fa-clock" style="color: black"></i><%=
+              activity.start_time%> to <%= activity.end_time%>
+            </div>
+            <div>Remarks: <%= activity.comments%></div>
+          </div>
+          <% if (activity.transport_type != "") {%>
+          <div class="each-activity-transport">
+            <i class="fas fa-grip-lines-vertical"></i>
+            <i class="fas fa-car" style="padding-right: 10px"></i> <%=
+            activity.transport_type%> <%= activity.transport_duration%>
+          </div>
+          <% } %> <%}%>
+        </div>
+        <%})%>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+<%- include('footer'); -%>

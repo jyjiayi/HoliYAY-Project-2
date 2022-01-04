@@ -1,0 +1,89 @@
+<%- include('header', {title: 'My Trips'}); -%>
+
+<div class="user-dashboard-container">
+  <div class="row">
+    <div class="col-12 col-md-3">
+      <fieldset class="border p-2">
+        <legend class="float-none w-auto p-2">My Profile</legend>
+        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+          <img
+            class="rounded-circle"
+            width="150px"
+            src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+          /><span class="font-weight-bold"><%= userName %></span>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="col-12 col-md-9 itineraries-container">
+      <div class="row">
+        <div class="col-md-10"><h1>My Itineraries</h1></div>
+        <div class="col-md-2 new-trip-button">
+          <a href="/new-trip"><i class="fas fa-plus-circle"></i> Add Trip</a>
+        </div>
+      </div>
+
+      <% userData.forEach(trip => { %>
+      <div>
+        <% Object.keys(trip).forEach(element => {%> 
+        <% if (element == "country") {%>
+        <div class="one-trip-div">
+          <div >
+            <a href="/trip/<%= trip.trip_id%>"
+              > Trip To <%= trip[element] %>
+            </a>
+            <% } else if (element == "start_date") { %>
+              <div><i class="far fa-calendar-alt"></i>
+                <%= trip[element].toLocaleDateString() %> - 
+            <% } else if (element == "end_date") { %> 
+              <%= trip[element].toLocaleDateString() %>
+              </div>
+            <% } %>
+          <% }) %>
+          </div>
+          <div class="d-flex edit-delete-icons">
+            <a href="/trip/<%= trip.trip_id %>/edit"><i class="fas fa-edit"></i></a>
+            <form
+              action="/trip/<%= trip.trip_id %>/delete?_method=DELETE"
+              method="POST"
+            >
+              <button type="submit" class="delete"><i class="fas fa-trash-alt"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <% })%>
+
+      <div class="buddies-trips-container">
+        <h1>Trips Created by Buddies</h1>
+
+        <% tripsBuddiesCreated.forEach(trip => { %>
+        <div>
+          <% Object.keys(trip).forEach(element => {%> 
+          <% if (element == "country") {%>
+          <div class="one-trip-div">
+            <div >
+              <a href="/trip/<%= trip.trip_id%>"
+                > Trip To <%= trip[element] %>
+              </a>
+              <% } else if (element == "start_date") { %>
+                <div><i class="far fa-calendar-alt"></i>
+                  <%= trip[element].toLocaleDateString() %> - 
+              <% } else if (element == "end_date") { %> 
+                <%= trip[element].toLocaleDateString() %>
+                </div>
+              <% } %>
+            <% }) %>
+            </div>
+          </div>
+        </div>
+        <% })%>
+      </div>
+    
+
+
+    </div>
+  </div>
+</div>
+
+<%- include('footer'); -%>

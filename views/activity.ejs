@@ -1,0 +1,60 @@
+<%- include('header', {title: 'View Activity'}); -%>
+
+<div class="activity-container">
+  <div class="row">
+    <div class="col-12 col-md-4 activity-intro-div">
+      <div class="bg-color"></div>
+      <div class="activity-intro-div2">
+        <h1>Activity Details for</h1>
+        <h2>Trip: <%= tripAndDayData.country%></h2>
+        <h2>
+          Day <%= tripAndDayData.day_num%> (<%=
+          tripAndDayData.date.toDateString()%>)
+        </h2>
+      </div>
+    </div>
+    <div class="col-12 col-md-8 activity-details-div">
+      <% categoryData.forEach(category => {%> 
+      <% if(category.id === activityData.category_id) { %>
+      <div class="activity-info"><%= category.type %></div>
+      <div class="activity-fields">Category of Activity</div>
+      <% }})%>
+
+      <div class="activity-info"><%= activityData.details%> </div>
+      <div class="activity-fields"> Details</div>
+
+      <div>
+        <div class="activity-info">
+        <i class="far fa-clock" style="color: black"></i>
+        <%=activityData.start_time%> to <%= activityData.end_time%></div>
+        <div class="activity-fields">Time</div>
+      </div>
+
+      <div class="activity-info"><%= activityData.comments%></div>
+      <div class="activity-fields">Remarks</div>
+
+      <% if (activityData.transport_type != "") {%>
+      <div class="activity-info">
+        <i class="fas fa-car" style="padding-right: 10px; color:black"></i> <%=
+        activityData.transport_type%> <%= activityData.transport_duration%>
+      </div>
+      <div class="activity-fields">Transport to next location</div>
+      <% } %>
+
+      <div class="mt-3" style="display: flex; justify-content: center">
+
+        <a href="/activity/<%= activityId %>/edit" class="edit">EDIT</a>
+
+        <form
+          action="/activity/<%= activityId %>/delete?_method=DELETE"
+          method="POST"
+        >
+          <button type="submit" class="delete">DELETE</button>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<%- include('footer'); -%>
