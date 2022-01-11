@@ -1,12 +1,12 @@
 <%- include('header', {title: 'Log In'}); -%>
 
-<div class="login-container">
+<div class="login-container2">
   <form action="/login" method="POST">
     <div class="row">
       <div class="col-10"><h1>Log In</h1></div>
     </div>
     <div class="row">
-      <div class="col-10 col-md-5">
+      <div class="col-10">
         <div class="form-group">
           <label for="name">Username:</label>
           <input type="text" name="name" class="form-control"></label>
@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-10 col-md-5">
+      <div class="col-10">
         <div class="form-group">
           <label for="password">Password:</label>
           <input type="password" name="password" class="form-control"></label>
@@ -32,6 +32,7 @@
       <a href="/signup">New? Register here</a>
     </div>
   </form>
+
 </div>
 
 <%- include('footer'); -%>

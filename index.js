@@ -35,9 +35,6 @@ if (process.env.ENV === 'PRODUCTION') {
 
 const pool = new Pool(pgConnectionConfigs);
 
-// set the name of the upload directory here
-const multerUpload = multer({ dest: 'uploads/' });
-
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -45,6 +42,10 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 app.use(cookieParser());
+app.use(express.static('uploads'));
+
+// set the name of the upload directory here
+const multerUpload = multer({ dest: 'uploads/' });
 
 // initialize salt as a global constant
 const { SALT } = process.env;
@@ -110,7 +111,7 @@ app.get('/signup', (request, response) => {
 });
 
 // Accept a POST request to create a user
-app.post('/signup', (request, response) => {
+app.post('/signup', multerUpload.single('photo'), (request, response) => {
   // initialise the SHA object
   const shaObj = new jsSHA('SHA-512', 'TEXT', { encoding: 'UTF8' });
 
@@ -124,12 +125,13 @@ app.post('/signup', (request, response) => {
 
   console.log('actual pw', request.body.password);
   console.log('hashed pw', hashedPassword);
+  console.log('request.file :>> ', request.file);
 
   const inputPassword = hashedPassword;
   // store the hashed password in our DB
-  const values = [inputName, inputPassword];
+  const values = [inputName, inputPassword, request.file.filename];
   pool.query(
-    'INSERT INTO users (name, password) VALUES ($1, $2)',
+    'INSERT INTO users (name, password, photo) VALUES ($1, $2, $3)',
     values,
     (error, result) => {
       if (error) {
@@ -202,14 +204,14 @@ app.post('/login', (request, response) => {
 
     response.cookie('isUserLoggedIn', true);
     response.cookie('userId', user.id);
-    response.redirect('/');
+    response.redirect('/user-dashboard');
   });
 });
 
 app.delete('/logout', (request, response) => {
   response.clearCookie('isUserLoggedIn');
   response.clearCookie('userId');
-  response.redirect('/login');
+  response.redirect('/');
 });
 
 app.get('/user-dashboard', (req, res) => {
@@ -219,9 +221,11 @@ app.get('/user-dashboard', (req, res) => {
   }
   const { userId } = req.cookies;
   let userName = '';
+  let userPhoto = '';
   let userData = '';
   pool.query(`SELECT * FROM users WHERE users.id=${userId}`).then((result) => {
     userName = result.rows[0].name;
+    userPhoto = result.rows[0].photo;
     return pool.query(`SELECT trip.id AS trip_id, trip.user_id, trip.country, trip.start_date, trip.end_date, users.name FROM trip INNER JOIN users ON trip.user_id = users.id WHERE users.id=${userId}`);
   }).then((result2) => {
     userData = result2.rows;
@@ -232,7 +236,9 @@ app.get('/user-dashboard', (req, res) => {
     WHERE buddy_trip.buddy_id =${userId}`);
   }).then((result3) => {
     const tripsBuddiesCreated = result3.rows;
-    res.render('user-dashboard', { userName, userData, tripsBuddiesCreated });
+    res.render('user-dashboard', {
+      userName, userPhoto, userData, tripsBuddiesCreated,
+    });
   })
     .catch((error) => {
       console.log('select user and trip tables query error', error);

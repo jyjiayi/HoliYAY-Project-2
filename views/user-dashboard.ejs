@@ -6,11 +6,20 @@
       <fieldset class="border p-2">
         <legend class="float-none w-auto p-2">My Profile</legend>
         <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+          <% if(userPhoto != null) {%>
           <img
             class="rounded-circle"
             width="150px"
-            src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
-          /><span class="font-weight-bold"><%= userName %></span>
+            src="/<%= userPhoto %>"
+          />
+          <%} else { %>
+          <img
+            class="rounded-circle"
+            width="150px"
+            src="/photos/default-profile-pic.jpg"
+          />
+          <% } %>
+          <span class="font-weight-bold"><%= userName %></span>
         </div>
       </fieldset>
     </div>

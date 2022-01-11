@@ -2,8 +2,8 @@
 
 <div class="single-trip-container">
   <div class="trip-details d-flex">
-    <h1>Trip to <%= tripData[0].country %></h1>
-    <h3>
+    <h1 style="font-size: 40px">Trip to <%= tripData[0].country %></h1>
+    <h3 style="font-size: 20px">
       <%= tripData[0].start_date.toLocaleDateString()%> - <%=
       tripData[0].end_date.toLocaleDateString()%>
     </h3>
@@ -30,8 +30,11 @@
             </div>
             <div><%= activity.details%></div>
             <div>
-              <i class="far fa-clock" style="color: black"></i><%=
-              activity.start_time%> to <%= activity.end_time%>
+              <i
+                class="far fa-clock"
+                style="color: black; margin-right: 10px"
+              ></i
+              ><%= activity.start_time%> to <%= activity.end_time%>
             </div>
             <div>Remarks: <%= activity.comments%></div>
           </div>

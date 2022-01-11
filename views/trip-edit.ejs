@@ -1,11 +1,11 @@
 <%- include('header', {title: 'Edit Trip'}); -%>
 
 <div class="trip-form-container">
-  <h1>Edit Trip</h1>
+  <h1 class="mt-2" style="font-size: 50px">Edit Trip</h1>
   <form action="/trip/<%= tripData.id%>?_method=PUT" method="POST">
     <div class="row">
       <div class="col-sm-4 input-field">
-        <label for="country">Where are you going?</label><br />
+        <label for="country">Where are you going?</label>
       </div>
       <div class="col-sm-7 input-field">
         <input
@@ -17,7 +17,7 @@
         /><br />
       </div>
       <div class="col-sm-2 input-field">
-        <label for="start_date">Start Date:</label><br />
+        <label for="start_date">Start Date:</label>
       </div>
       <div class="col-sm-4 input-field">
         <input
@@ -29,7 +29,7 @@
         /><br />
       </div>
       <div class="col-sm-2 input-field">
-        <label for="end_date">End Date:</label><br />
+        <label for="end_date">End Date:</label>
       </div>
       <div class="col-sm-4 input-field">
         <input

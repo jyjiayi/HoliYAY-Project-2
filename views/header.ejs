@@ -38,12 +38,12 @@
         <span class="fas fa-user"></span>
         </button>
         <div class="dropdown-menu dropdown-menu-right user-dropdown" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="/login">Log In</a>
+          <a class="dropdown-item" href="/login" data-toggle="modal" data-target=".bd-example-modal-sm">Log In</a>
           <form action="/logout?_method=DELETE" method="POST">
             <button type="submit" class="dropdown-item btn btn btn-md user-dropdown-logout">Log Out</button>
           </form>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="/signup">Sign Up</a>
+          <a class="dropdown-item" href="/signup" data-toggle="modal" data-target=".signup-modal">Sign Up</a>
         </div>
       </div>
 
@@ -62,6 +62,95 @@
         </ul>
       <div>
     </nav>
+
+    <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+          <div class="login-container">
+            <form action="/login" method="POST">
+              <div class="row">
+                <div class="col-10"><h1>Log In</h1></div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group">
+                    <label for="name">Username:</label>
+                    <input type="text" name="name" class="form-control"></label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" class="form-control"></label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-10">
+                  <div><button type="submit">Submit</button></div>
+                </div>
+              </div>
+              <br />
+              <div>
+                <a href="/signup">New? Register here</a>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade signup-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="signup-container">
+            <form action="/signup" method="POST" enctype="multipart/form-data">
+              <div class="row">
+                <div class="title-name">HoliYAY</div>
+                <div class="sub-text">Create account</div>
+              </div>
+              <div class="row">
+                  <div><img class="rounded-circle" width="120px" src="/photos/default-profile-pic.jpg" /></div>
+                  <div class="photo-upload" style="display: flex; justify-content: space-around;">
+                    <label for="photo"></label>
+                    <input type="file" name="photo" />
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-1"></div>
+                <div class="col-10">
+                  <div class="form-group" >
+                    <label for="name"></label>
+                    <input type="text" name="name" class="form-control" placeholder="Username"></label>
+                  </div>
+                </div>
+                <div class="col-1"></div>
+              </div>
+              <div class="row">
+                <div class="col-1"></div>
+                <div class="col-10">
+                  <div class="form-group">
+                    <label for="password"></label>
+                    <input type="password" name="password" class="form-control" placeholder="Password"></label>
+                  </div>
+                </div>
+                <div class="col-1"></div>
+              </div>
+
+              <div class="row">
+                <div class="col-12">
+                  <div><button type="submit">Submit</button></div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 
 <div class="after-nav-bar">
 

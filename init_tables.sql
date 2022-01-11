@@ -1,7 +1,8 @@
 CREATE TABLE IF NOT EXISTS users (
   id SERIAL PRIMARY KEY,
   name TEXT,
-  password TEXT
+  password TEXT,
+  photo TEXT
 );
 
 CREATE TABLE IF NOT EXISTS trip (

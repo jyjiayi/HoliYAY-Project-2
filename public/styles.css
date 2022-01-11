@@ -40,37 +40,110 @@ body {
   background-color: #dfd3c3;
 }
 
-.signup-container {
-  margin: 0px 0px 0px 70px;
+/************Log In PopUp*****************/
+
+.login-container {
+  margin: 20px 0px 20px 0px;
+  display: flex;
+  justify-content: center;
 }
-.signup-container h1 {
+
+.login-container h1 {
+  font-size: 40px;
+}
+.login-container label {
+  font-size: 30px;
+}
+
+.login-container a {
+  font-size: 30px;
+}
+
+.login-container button {
+  background: none;
+  border: black solid 2px;
+  border-radius: 10px;
+  color: black;
+  font-size: 30px;
+  margin-top: 10px;
+}
+
+.login-container button:hover {
+  background: #f0ece3;
+  border: #f0ece3 solid 2px;
+}
+
+.login-container a:hover {
+  color: #a68dad;
+}
+
+/************Log In Page*****************/
+
+.login-container2 {
+  margin: 20px 0px 0px 70px;
+}
+
+.login-container2 h1 {
   font-size: 50px;
 }
-.signup-container label {
+.login-container2 label {
   font-size: 40px;
+}
+
+.login-container2 a {
+  font-size: 30px;
+}
+
+.login-container2 button {
+  background: none;
+  border: black solid 2px;
+  border-radius: 10px;
+  color: black;
+  font-size: 30px;
+  margin-top: 10px;
+}
+
+.login-container2 button:hover {
+  background: #f0ece3;
+  border: #f0ece3 solid 2px;
+}
+
+.login-container2 a:hover {
+  color: #a68dad;
+}
+
+/*************Sign Up Pop up*************/
+
+.signup-container {
+  margin: 20px 0px 20px 0px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 
 .signup-container button {
-  font-size: 30px;
+  background: none;
+  border: grey solid 2px;
+  border-radius: 10px;
+  color: grey;
+  font-size: 20px;
+  margin-top: 10px;
 }
 
-.signup-container label {
+.signup-container button:hover {
+  background: #f0ece3;
+  border: #f0ece3 solid 2px;
+}
+
+.signup-container .title-name {
   font-size: 40px;
+  color: #a68dad;
+  line-height: 0.8;
 }
 
-.login-container {
-  margin: 00px 0px 0px 70px;
-}
-.login-container h1 {
-  font-size: 50px;
-}
-.login-container label {
-  font-size: 40px;
-}
-
-.login-container button,
-a {
-  font-size: 30px;
+.signup-container .sub-text {
+  font-size: 20px;
+  color: lightgrey;
 }
 
 /*************Welcome-Page************/
@@ -137,7 +210,7 @@ a {
 }
 
 .border {
-  border: black 2px solid !important;
+  border: #a68dad 3px solid !important;
   border-radius: 15px;
 }
 
@@ -145,9 +218,14 @@ a {
   padding: 10px;
 }
 
+.itineraries-container a:hover {
+  background: #f0ece3;
+  border: #f0ece3 solid 2px;
+}
+
 .new-trip-button a {
   color: black;
-  border: black solid 2px;
+  border: #c7b198 solid 2px;
   text-decoration: none;
   padding: 10px;
   border-radius: 10px;
@@ -158,7 +236,7 @@ a {
 }
 
 .one-trip-div {
-  border: black solid 2px;
+  border: #c7b198 solid 2px;
   border-radius: 15px;
   margin-top: 20px;
   padding: 10px 30px;
@@ -173,8 +251,20 @@ a {
   color: black;
 }
 
+.one-trip-div a:hover {
+  color: #c7b198 !important;
+  background: none !important;
+  border: none !important;
+}
+
 .user-dashboard-container .edit-delete-icons a {
   margin-right: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.user-dashboard-container .edit-delete-icons i:hover {
+  color: #c7b198;
 }
 
 .user-dashboard-container .edit-delete-icons button {
@@ -182,6 +272,7 @@ a {
   background: none;
   font-size: 30px;
 }
+
 .buddies-trips-container {
   margin-top: 15px;
 }
@@ -212,9 +303,10 @@ h3 {
 }
 
 .days-group h2 {
-  border: black solid 2px;
+  border: #dfd3c3 solid 2px;
   border-radius: 10px;
   padding: 8px;
+  background-color: #dfd3c3;
 }
 
 .days-group a,
@@ -224,8 +316,12 @@ i {
   font-size: 20px;
 }
 
+.days-group a:hover {
+  color: #dfd3c3;
+}
+
 .each-activity-main {
-  border: black solid 2px;
+  border: #dfd3c3 solid 2px;
   border-radius: 10px;
   padding: 10px;
   margin: 10px;
@@ -337,6 +433,7 @@ button {
 
 .activity-intro-div2 {
   padding-top: 30%;
+  color: grey;
 }
 
 .activity-intro-div h1 {
@@ -368,6 +465,12 @@ button {
   border: black solid 2px;
   border-radius: 10px;
   padding: 2px 15px;
+  font-size: 30px;
+}
+
+.activity-container a:hover {
+  border: #f0ece3 solid 2px;
+  background-color: #f0ece3;
 }
 
 .activity-container button {
@@ -377,4 +480,44 @@ button {
   border: black solid 2px;
   border-radius: 10px;
   color: black;
+}
+
+.activity-container button:hover {
+  border: #f0ece3 solid 2px;
+  background-color: #f0ece3;
+}
+
+/*********Activity-edit****************/
+.edit-activity-form-container {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.edit-activity-form-container .input-field {
+  font-size: 25px;
+  margin-top: 20px;
+  line-height: 40px;
+}
+
+.edit-activity-form-container select {
+  height: 40px;
+  border-radius: 5px;
+  border: lightgray solid 2px;
+}
+
+.edit-activity-form-container .submit-button {
+  font-size: 25px;
+  background: none;
+  border: black solid 2px;
+  margin-bottom: 20px;
+}
+
+.edit-activity-form-container input {
+  border-radius: 5px;
+  border: lightgray solid 2px;
+}
+
+.edit-activity-form-container .submit-button:hover {
+  background-color: #dfd3c3;
+  border: #dfd3c3 solid 2px;
 }
