@@ -1,9 +1,12 @@
 <%- include('header', {title: 'Single Trip'}); -%>
 
 <div class="single-trip-container">
+  <div class="gradient-bg"></div>
   <div class="trip-details d-flex">
-    <h1 style="font-size: 40px">Trip to <%= tripData[0].country %></h1>
-    <h3 style="font-size: 20px">
+    <h1 style="font-size: 40px; font-weight: bold">
+      Trip to <%= tripData[0].country %>
+    </h1>
+    <h3 style="font-size: 20px; font-weight: bold">
       <%= tripData[0].start_date.toLocaleDateString()%> - <%=
       tripData[0].end_date.toLocaleDateString()%>
     </h3>
@@ -22,9 +25,12 @@
         <div>
           <% if (activity.day_id == tripData[i-1].day_id){%>
           <div class="each-activity-main">
-            <div class="d-flex" style="justify-content: space-between">
+            <div
+              class="d-flex"
+              style="justify-content: space-between; font-weight: bold"
+            >
               <%= activity.type%>
-              <a href="/activity/<%= activity.id %>"
+              <a style="font-weight: normal" href="/activity/<%= activity.id %>"
                 ><i class="far fa-eye"></i>View</a
               >
             </div>

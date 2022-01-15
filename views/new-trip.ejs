@@ -1,31 +1,43 @@
 <%- include('header', {title: 'Add New Trip'}); -%>
 
 <div class="trip-form-container">
-  <h1>Add New Trip</h1>
-  <form action="/new-trip" method="POST">
-    <div class="row">
-      <div class="col-sm-4 input-field">
-        <label for="country">Where are you going?</label><br />
-      </div>
-      <div class="col-sm-7 input-field">
-        <input type="text" id="country" name="country" required /><br />
-      </div>
-      <div class="col-sm-2 input-field">
-        <label for="start_date">Start Date:</label><br />
-      </div>
-      <div class="col-sm-4 input-field">
-        <input type="date" id="start_date" name="start_date" required /><br />
-      </div>
-      <div class="col-sm-2 input-field">
-        <label for="end_date">End Date:</label><br />
-      </div>
-      <div class="col-sm-4 input-field">
-        <input type="date" id="end_date" name="end_date" required /><br />
-      </div>
+  <div class="gradient-bg"></div>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 grey-box" style="padding: 20px">
+      <h1 style="font-size: 50px; color: #a68dad">Add New Trip</h1>
+      <form action="/new-trip" method="POST">
+        <div class="row">
+          <div class="col-sm-4 input-field">
+            <label for="country">Where are you going?</label><br />
+          </div>
+          <div class="col-sm-7 input-field">
+            <input type="text" id="country" name="country" required /><br />
+          </div>
+          <div class="col-sm-2 input-field">
+            <label for="start_date">Start Date:</label><br />
+          </div>
+          <div class="col-sm-4 input-field">
+            <input
+              type="date"
+              id="start_date"
+              name="start_date"
+              required
+            /><br />
+          </div>
+          <div class="col-sm-2 input-field">
+            <label for="end_date">End Date:</label><br />
+          </div>
+          <div class="col-sm-4 input-field">
+            <input type="date" id="end_date" name="end_date" required /><br />
+          </div>
+        </div>
+        <div>
+          <input class="new-trip-submit" type="submit" value="Submit" />
+        </div>
+      </form>
     </div>
-    <div>
-      <input type="submit" value="Submit" />
-    </div>
-  </form>
+    <div class="col-md-2"></div>
+  </div>
 </div>
 <%- include('footer'); -%>

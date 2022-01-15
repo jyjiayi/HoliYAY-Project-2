@@ -10,7 +10,7 @@ body {
 
 /*************Header*************/
 .navbar {
-  background-color: rgb(240, 236, 227, 0.8);
+  background-color: rgb(240, 236, 227);
   padding: 5px 10px;
 }
 
@@ -46,6 +46,18 @@ body {
   margin: 20px 0px 20px 0px;
   display: flex;
   justify-content: center;
+  text-align: center;
+}
+
+.login-container .title-name {
+  font-size: 40px;
+  color: #a68dad;
+  line-height: 0.8;
+}
+
+.login-container .sub-text {
+  font-size: 20px;
+  color: lightgrey;
 }
 
 .login-container h1 {
@@ -56,16 +68,16 @@ body {
 }
 
 .login-container a {
-  font-size: 30px;
+  font-size: 20px;
 }
 
 .login-container button {
   background: none;
-  border: black solid 2px;
+  border: grey solid 2px;
   border-radius: 10px;
-  color: black;
-  font-size: 30px;
-  margin-top: 10px;
+  color: grey;
+  font-size: 20px;
+  margin-top: 20px;
 }
 
 .login-container button:hover {
@@ -104,8 +116,8 @@ body {
 }
 
 .login-container2 button:hover {
-  background: #f0ece3;
-  border: #f0ece3 solid 2px;
+  background: lightgray;
+  border: lightgray solid 2px;
 }
 
 .login-container2 a:hover {
@@ -209,6 +221,21 @@ body {
   padding: 15px;
 }
 
+.gradient-bg {
+  /* background-image: url(https://www.lufthansagroup.com/media/_processed_/2/6/csm_20211118_PM_SAF_01_d08412cd6d.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; */
+  background-image: linear-gradient(#dfd3c3, white);
+  filter: blur(2px);
+  position: fixed;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
 .border {
   border: #a68dad 3px solid !important;
   border-radius: 15px;
@@ -303,10 +330,10 @@ h3 {
 }
 
 .days-group h2 {
-  border: #dfd3c3 solid 2px;
+  border: #c7b198 solid 2px;
   border-radius: 10px;
   padding: 8px;
-  background-color: #dfd3c3;
+  background-color: #c7b198;
 }
 
 .days-group a,
@@ -321,7 +348,7 @@ i {
 }
 
 .each-activity-main {
-  border: #dfd3c3 solid 2px;
+  border: #c7b198 solid 2px;
   border-radius: 10px;
   padding: 10px;
   margin: 10px;
@@ -339,8 +366,8 @@ i {
 
 /*****************New-Trip*****************/
 .trip-form-container {
-  margin: 0px 20px 0px 20px;
-  font-size: 40px;
+  margin: 20px 20px 0px 20px;
+  font-size: 30px;
 }
 .trip-form-container input {
   border-radius: 5px;
@@ -353,8 +380,14 @@ i {
   height: 50px;
 }
 
-.trip-form-container .input-field {
-  height: 50px;
+.trip-form-container .new-trip-submit {
+  background: none;
+  border: white solid 2px;
+}
+
+.trip-form-container .new-trip-submit:hover {
+  background-color: #dfd3c3;
+  border: #dfd3c3 solid 2px;
 }
 
 .activity-form-container input {
@@ -382,6 +415,10 @@ i {
   align-content: center;
   display: flex;
   padding: 5px;
+}
+
+.buddy-dashboard-container .add-buddy-icon:hover {
+  color: black;
 }
 
 .each-buddy-div {
@@ -416,6 +453,13 @@ button {
   text-decoration: none;
 }
 
+.each-buddy-edit-delete-icons a:hover {
+  color: black;
+}
+
+.each-buddy-edit-delete-icons button:hover {
+  color: black;
+}
 /****************Activity*********************/
 .activity-intro-div {
   display: flex;
@@ -518,6 +562,107 @@ button {
 }
 
 .edit-activity-form-container .submit-button:hover {
+  background-color: #dfd3c3;
+  border: #dfd3c3 solid 2px;
+}
+
+/*********New-activity****************/
+.activity-form-container2 {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.grey-box {
+  background-color: rgba(128, 128, 128, 0.432);
+  margin-bottom: 30px;
+}
+
+.activity-form-container2 .input-field {
+  font-size: 25px;
+  line-height: 40px;
+  margin-top: 30px;
+}
+
+.activity-form-container2 select {
+  height: 40px;
+  border-radius: 5px;
+  border: lightgray solid 2px;
+}
+
+.activity-form-container2 .submit-button {
+  font-size: 25px;
+  background: none;
+  border: black solid 2px;
+  margin-bottom: 20px;
+}
+
+.activity-form-container2 input {
+  border-radius: 5px;
+  border: lightgray solid 2px;
+}
+
+.activity-form-container2 .submit-button:hover {
+  background-color: #dfd3c3;
+  border: #dfd3c3 solid 2px;
+}
+
+/****************Add-buddy-trip***********/
+.activity-form-container3 {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.activity-form-container3 .input-field {
+  font-size: 25px;
+  line-height: 40px;
+  margin-top: 30px;
+}
+
+.activity-form-container3 select {
+  height: 40px;
+  border-radius: 5px;
+  border: lightgray solid 2px;
+}
+
+.activity-form-container3 .submit-button {
+  font-size: 25px;
+  background: none;
+  border: black solid 2px;
+  margin-bottom: 20px;
+}
+
+.activity-form-container3 input {
+  border-radius: 5px;
+  border: lightgray solid 2px;
+}
+
+.activity-form-container3 .submit-button:hover {
+  background-color: #dfd3c3;
+  border: #dfd3c3 solid 2px;
+}
+
+/**************Add-buddy************/
+.buddy-form-container {
+  margin: 20px 20px 0px 20px;
+  font-size: 30px;
+}
+.buddy-form-container input {
+  border-radius: 5px;
+  border: grey solid 1px;
+  overflow-wrap: break-word;
+}
+.buddy-form-container .input-field {
+  margin-bottom: 20px;
+  display: flex;
+  height: 50px;
+}
+
+.buddy-form-container .new-buddy-submit {
+  background: none;
+  border: white solid 2px;
+}
+
+.buddy-form-container .new-buddy-submit:hover {
   background-color: #dfd3c3;
   border: #dfd3c3 solid 2px;
 }

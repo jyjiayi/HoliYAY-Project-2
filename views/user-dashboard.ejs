@@ -1,12 +1,13 @@
 <%- include('header', {title: 'My Trips'}); -%>
 
 <div class="user-dashboard-container">
+  <div class="gradient-bg"></div>
   <div class="row">
     <div class="col-12 col-md-3">
-      <fieldset class="border p-2">
+      <fieldset class="border p-2" >
         <legend class="float-none w-auto p-2">My Profile</legend>
         <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-          <% if(userPhoto != null) {%>
+          <% if(userPhoto != "default") {%>
           <img
             class="rounded-circle"
             width="150px"
@@ -88,8 +89,6 @@
         </div>
         <% })%>
       </div>
-    
-
 
     </div>
   </div>

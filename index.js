@@ -81,7 +81,7 @@ app.use((request, response, next) => {
 
       // try to get the user
       pool.query('SELECT * FROM users WHERE id=$1', values, (error, result) => {
-        if (error || result.rows.length < 1) {
+        if (error) {
           response.status(503).send('sorry!');
           return;
         }
@@ -127,9 +127,14 @@ app.post('/signup', multerUpload.single('photo'), (request, response) => {
   console.log('hashed pw', hashedPassword);
   console.log('request.file :>> ', request.file);
 
+  let values = [];
   const inputPassword = hashedPassword;
-  // store the hashed password in our DB
-  const values = [inputName, inputPassword, request.file.filename];
+  if (request.file === undefined) {
+    values = [inputName, inputPassword, 'default'];
+  }
+  else {
+    values = [inputName, inputPassword, request.file.filename];
+  }
   pool.query(
     'INSERT INTO users (name, password, photo) VALUES ($1, $2, $3)',
     values,
@@ -680,15 +685,16 @@ app.get('/buddy-dashboard', (req, res) => {
   }
   const { userId } = req.cookies;
 
-  pool.query(`SELECT users.name, buddy.user_id, buddy.buddy_user_id FROM users INNER JOIN buddy ON users.id = buddy.buddy_user_id WHERE buddy.user_id=${userId} UNION
-  SELECT users.name, buddy.user_id, buddy.buddy_user_id 
+  pool.query(`SELECT users.name, users.photo, buddy.user_id, buddy.buddy_user_id FROM users INNER JOIN buddy ON users.id = buddy.buddy_user_id WHERE buddy.user_id=${userId} UNION
+  SELECT users.name, users.photo, buddy.user_id, buddy.buddy_user_id 
   FROM users 
   INNER JOIN buddy 
   ON users.id = buddy.user_id
   WHERE buddy.buddy_user_id=${userId}`).then((result) => {
     const allBuddiesName = [...new Set(result.rows.map((buddy) => buddy.name))];
-    return pool.query(`SELECT trip.country, buddy_trip.trip_id, buddy_trip.id AS buddy_trip_id, buddy.user_id, buddy.buddy_user_id, users.name FROM trip INNER JOIN buddy_trip ON trip.id = buddy_trip.trip_id INNER JOIN buddy ON buddy_trip.buddy_id = buddy.buddy_user_id INNER JOIN users ON buddy.buddy_user_id = users.id WHERE buddy.user_id =${userId} UNION
-    SELECT trip.country, buddy_trip.trip_id, buddy_trip.id AS buddy_trip_id, buddy.user_id, buddy.buddy_user_id, users.name 
+    const allBuddiesNamePhotos = result.rows;
+    return pool.query(`SELECT trip.country, buddy_trip.trip_id, buddy_trip.id AS buddy_trip_id, buddy.user_id, buddy.buddy_user_id, users.name, users.photo FROM trip INNER JOIN buddy_trip ON trip.id = buddy_trip.trip_id INNER JOIN buddy ON buddy_trip.buddy_id = buddy.buddy_user_id INNER JOIN users ON buddy.buddy_user_id = users.id WHERE buddy.user_id =${userId} UNION
+    SELECT trip.country, buddy_trip.trip_id, buddy_trip.id AS buddy_trip_id, buddy.user_id, buddy.buddy_user_id, users.name, users.photo 
     FROM trip 
     INNER JOIN buddy_trip 
     ON trip.id = buddy_trip.trip_id 
@@ -699,7 +705,9 @@ app.get('/buddy-dashboard', (req, res) => {
     WHERE buddy.buddy_user_id=${userId}`).then((result2) => {
       const buddiesWithTripData = result2.rows;
       const buddiesWithTripNames = [...new Set(buddiesWithTripData.map((buddy) => buddy.name))];
-      res.render('buddy-dashboard', { allBuddiesName, buddiesWithTripData, buddiesWithTripNames });
+      res.render('buddy-dashboard', {
+        allBuddiesName, buddiesWithTripData, buddiesWithTripNames, allBuddiesNamePhotos,
+      });
     }).catch((error) => {
       console.log('select buddy query error', error);
       res.status(400).send('Sorry, there is an error.');
